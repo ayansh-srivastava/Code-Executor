@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package code_execution;
+
+service CodeExecution {
+    rpc test_connection (TestConnectionRequest) returns (TestConnectionResponse);
+//   rpc ExecuteCode (ExecuteCodeRequest) returns (ExecuteCodeResponse);
+}
+
+message TestConnectionRequest {
+    string message = 1;
+}
+
+message TestConnectionResponse {
+    string message = 1;
+}

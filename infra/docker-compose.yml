@@ -1,0 +1,31 @@
+services:
+  api_gateway:
+    build:
+      context: ../src
+      dockerfile: services/api_gateway/Dockerfile
+    image: api_gateway:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../src:/app
+    environment:
+      - PYTHONPATH=/app
+  code_execution:
+    build:
+      context: ../src
+      dockerfile: services/code_execution/Dockerfile
+    image: code_execution:latest
+    ports:
+      - "50051:50051"
+    volumes:
+      - ../src:/app
+    environment:
+      - PYTHONPATH=/app
+  # problem:
+  #   image: problem_service:latest
+  #   ports:
+  #     - "5001:5001"
+  # submission:
+  #   image: submission_service:latest
+  #   ports:
+  #     - "5002:5002"

@@ -2,9 +2,11 @@ syntax = "proto3";
 
 package code_execution;
 
+import "google/protobuf/struct.proto";
+
 service CodeExecution {
-    rpc test_connection (TestConnectionRequest) returns (TestConnectionResponse);
-//   rpc ExecuteCode (ExecuteCodeRequest) returns (ExecuteCodeResponse);
+    rpc TestConnection (TestConnectionRequest) returns (TestConnectionResponse);
+    rpc ExecuteCode (ExecuteCodeRequest) returns (ExecuteCodeResponse);
 }
 
 message TestConnectionRequest {
@@ -13,4 +15,22 @@ message TestConnectionRequest {
 
 message TestConnectionResponse {
     string message = 1;
+}
+
+message ExecuteCodeRequest {
+    enum Language {
+        PYTHON = 0;
+        JAVASCRIPT = 1;
+        JAVA = 2;
+        C = 3;
+        CPP = 4;
+    }
+    Language language = 1;
+    string code = 2;
+    repeated google.protobuf.Struct input = 3;
+}
+
+message ExecuteCodeResponse {
+    repeated google.protobuf.Struct output = 1;
+    string error = 2;
 }

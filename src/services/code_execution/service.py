@@ -6,10 +6,16 @@ from grpc import aio
 from proto import code_execution_pb2_grpc as CodeExecutionService
 from proto.code_execution_pb2 import TestConnectionResponse
 
+from services.code_execution.code_exection import CodeExecutor
+
 class CodeExecution(CodeExecutionService.CodeExecutionServicer):
 
-    async def test_connection(self, request, context):
+    async def TestConnection(self, request, context):
         return TestConnectionResponse(message = 'Hi connection is good')
+
+    async def ExecuteCode(self, request, context):
+        code_executor = CodeExecutor(request, context)
+        return await code_executor.execute_code(request)
 
 async def serve():
     server = aio.server()

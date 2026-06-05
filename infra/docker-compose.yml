@@ -21,6 +21,18 @@ services:
       - ../src:/app
     environment:
       - PYTHONPATH=/app
+  piston_engine:
+    image: ghcr.io/engineer-man/piston:latest
+    container_name: piston_backend_engine
+    restart: always
+    privileged: true
+    ports:
+      - "2000:2000"
+    volumes:
+      - piston_data:/piston/data
+
+volumes:
+  piston_data:
   # problem:
   #   image: problem_service:latest
   #   ports:

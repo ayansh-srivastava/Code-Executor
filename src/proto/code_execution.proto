@@ -26,11 +26,13 @@ message ExecuteCodeRequest {
         CPP = 4;
     }
     Language language = 1;
-    string code = 2;
-    repeated google.protobuf.Struct input = 3;
+    string version = 2;
+    string code = 3;
+    repeated string stdin = 4;
 }
 
 message ExecuteCodeResponse {
-    repeated google.protobuf.Struct output = 1;
-    string error = 2;
+    repeated string output = 1;
+    repeated string stdout = 2;
+    repeated string stderr = 3;
 }

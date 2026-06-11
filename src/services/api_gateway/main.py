@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from services.api_gateway.proto_registry_loader import load_proto_registry
-from services.api_gateway.middleware.logging import RequestMiddleware
+from services.api_gateway.middleware.request import RequestMiddleware
 from services.api_gateway.routes import health
 from services.api_gateway.routes import code_execution
 

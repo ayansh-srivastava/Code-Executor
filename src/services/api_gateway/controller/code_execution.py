@@ -11,9 +11,11 @@ async def test():
 
 async def execute_code(request):
     request_body = await request.json()
+    request_id = request.state.request_id
 
     code_execution_client = GrpcClientManager.getInstance('code_execution')
     request_pb = ExecuteCodeRequest(
+        request_id=request_id,
         version=request_body["version"],
         language=request_body.get("language"),
         code=request_body.get("code", ""),

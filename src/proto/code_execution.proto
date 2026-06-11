@@ -25,14 +25,16 @@ message ExecuteCodeRequest {
         C = 3;
         CPP = 4;
     }
-    Language language = 1;
-    string version = 2;
-    string code = 3;
-    repeated string stdin = 4;
+    string request_id = 1;
+    Language language = 11;
+    string version = 12;
+    string code = 13;
+    repeated string stdin = 14;
 }
 
 message ExecuteCodeResponse {
-    repeated string output = 1;
-    repeated string stdout = 2;
-    repeated string stderr = 3;
+    string request_id = 1;
+    repeated string output = 11;
+    repeated string stdout = 12;
+    repeated string stderr = 13;
 }

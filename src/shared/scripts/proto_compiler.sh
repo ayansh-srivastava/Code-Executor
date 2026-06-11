@@ -20,4 +20,11 @@ python3 -m grpc_tools.protoc \
   --grpc_python_out=src \
   src/proto/*.proto
 
+
+python3 -m grpc_tools.protoc \
+  -I=src \
+  --python_out=src \
+  --grpc_python_out=src \
+  src/services/api_gateway/api_proto/*.proto
+
 echo "Done."

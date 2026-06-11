@@ -6,7 +6,7 @@ add languages in piston
 - [x] Code Execution Worker service
 - [x] Middleware to convert incoming request to protobuff
 - [x] Middleware to add request id
-- [ ] Logger setup
+- [x] Logger setup
 - [ ] Redis integration
 - [ ] Prdocuer/Consumer class based
 - [ ] Nats integration

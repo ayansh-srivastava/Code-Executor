@@ -4,15 +4,15 @@ add languages in piston
 
 - [x] API Gateway service
 - [x] Code Execution Worker service
-- [] Middleware to convert incoming request to protobuff
-- [] Middleware to add request id
-- [] Logger setup
-- [] Prdocuer/Consumer class based
-- [] Redis integration
-- [] Nats integration
-- [] Multiple test cases execution
-- [] DB setup
-- [] Problem service
-- [] User service
-- [] Code Execution Ingestion service
+- [x] Middleware to convert incoming request to protobuff
+- [x] Middleware to add request id
+- [x] Logger setup
+- [ ] Redis integration
+- [ ] Prdocuer/Consumer class based
+- [ ] Nats integration
+- [ ] Multiple test cases execution
+- [ ] DB setup
+- [ ] Problem service
+- [ ] User service
+- [ ] Code Execution Ingestion service
 

@@ -7,7 +7,7 @@ add languages in piston
 - [x] Middleware to convert incoming request to protobuff
 - [x] Middleware to add request id
 - [x] Logger setup
-- [ ] Redis integration
+- [x] Redis integration
 - [ ] Prdocuer/Consumer class based
 - [ ] Nats integration
 - [ ] Multiple test cases execution

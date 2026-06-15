@@ -1,5 +1,9 @@
+import redis
+
 from shared.grpc.grpc_client_manager import GrpcClientManager
 from proto.code_execution_pb2 import TestConnectionRequest, ExecuteCodeRequest
+
+redis_client = redis.StrictRedis(host='redis_server', port=6379, db=0)
 
 async def test():
     code_execution_client = GrpcClientManager.getInstance('code_execution')
@@ -12,7 +16,9 @@ async def test():
 async def execute_code(request):
     request_body = await request.json()
     request_id = request.state.request_id
+    redis_client.set(f"execution:{request_id}:status", "pending")
 
+    print(f"Request ID: {request_id}{redis_client.get(f'execution:{request_id}:status')}")
     code_execution_client = GrpcClientManager.getInstance('code_execution')
     request_pb = ExecuteCodeRequest(
         request_id=request_id,
@@ -22,4 +28,6 @@ async def execute_code(request):
         # stdin=request_body.get("stdin", []),
     )
     response = await code_execution_client.ExecuteCode(request_pb)
+    redis_client.set(f"execution:{request_id}:status", "completed")
+    print(f"Request ID: {request_id}{redis_client.get(f'execution:{request_id}:status')}")
     return response

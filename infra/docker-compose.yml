@@ -30,8 +30,17 @@ services:
       - "2000:2000"
     volumes:
       - piston_data:/piston/data
+  redis:
+    image: redis:7-alpine
+    container_name: redis_server
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: always
 
 volumes:
+  redis_data:
   piston_data:
   # problem:
   #   image: problem_service:latest
